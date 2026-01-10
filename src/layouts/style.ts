@@ -1,13 +1,8 @@
 import styled from 'styled-components';
-import bgImage from '../assets/background.png';
+import bgImage from '../assets/bg-light.png';
 
 const RootLayoutStyle = styled.div`
-	background-image: radial-gradient(
-			39.17% 100.27% at 27.92% 78.78%,
-			rgba(193, 150, 221, 0.7) 0%,
-			rgba(141, 113, 208, 0.8) 100%
-		),
-		url(${bgImage});
+	background-image: url(${bgImage});
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
