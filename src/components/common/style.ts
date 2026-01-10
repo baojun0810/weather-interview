@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 type InputTextStyledProps = {
-	isError?: boolean; // optional
+	isError?: boolean;
 };
 
 export const InputTextStyled = styled.div<InputTextStyledProps>`

@@ -23,13 +23,16 @@ const WeatherToolBar = () => {
 	const [invalidLocation, setInvalidLocation] = useState(false);
 	const [loading, setLoading] = useState(false);
 
+	//adout zustand here
 	const setWeatherInfo = useWeatherStore((s) => s.setWeatherInfo);
 	const addWeatherHistory = useWeatherStore((s) => s.addWeatherHistory);
 
+	//handle form search
 	const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setLoading(true);
 
+		//validate data using zod
 		const validate = weatherSearchSchema.safeParse(weatherFilters);
 
 		if (!validate.success) {
@@ -39,6 +42,7 @@ const WeatherToolBar = () => {
 			return;
 		}
 
+		//call api and set data
 		try {
 			await searchWeather(
 				weatherFilters,
@@ -46,9 +50,11 @@ const WeatherToolBar = () => {
 				addWeatherHistory
 			);
 
+			//success and reset here
 			reset();
 		} catch (e) {
 			if (axios.isAxiosError(e)) {
+				//location not found
 				if (e.response?.data.cod === '404') setInvalidLocation(true);
 				else notify('Opps, something went wrong', 'error');
 			} else notify('Opps, something went wrong', 'error');
