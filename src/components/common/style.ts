@@ -121,6 +121,7 @@ export const ButtonStyled = styled.button`
 	outline: ${(props) =>
 		props.theme.isDark ? `2px ${props.theme.textSecondary} solid` : 'none'};
 	cursor: pointer;
+	border-radius: 50%;
 
 	&.button-icon {
 		color: ${(props) => props.theme.textSecondary};
