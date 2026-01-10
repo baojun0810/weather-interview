@@ -168,8 +168,8 @@ export const EmptyStyled = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	padding: 60px 20px;
-	min-height: 400px;
+	padding: 40px 20px;
+	min-height: 350px;
 
 	.empty-content {
 		display: flex;
@@ -206,8 +206,9 @@ export const EmptyStyled = styled.div`
 			}
 
 			.image {
-				width: 180px;
-				height: 180px;
+				width: 140px;
+				height: 140px;
+
 				object-fit: contain;
 				opacity: 0.9;
 				filter: drop-shadow(
@@ -217,14 +218,14 @@ export const EmptyStyled = styled.div`
 		}
 
 		.title {
-			font-size: 24px;
+			font-size: 20px;
 			font-weight: 700;
 			color: ${(props) => props.theme.textPrimary};
 			margin: 0 0 12px 0;
 		}
 
 		.description {
-			font-size: 16px;
+			font-size: 14px;
 			color: ${(props) => props.theme.textSecondary};
 			margin: 0 0 24px 0;
 			line-height: 1.5;
@@ -232,21 +233,21 @@ export const EmptyStyled = styled.div`
 	}
 
 	@media (min-width: 601px) {
-		padding: 40px 20px;
-		min-height: 350px;
+		padding: 60px 20px;
+		min-height: 400px;
 
 		.empty-content {
 			.image-container .image {
-				width: 140px;
-				height: 140px;
+				width: 180px;
+				height: 180px;
 			}
 
 			.title {
-				font-size: 20px;
+				font-size: 24px;
 			}
 
 			.description {
-				font-size: 14px;
+				font-size: 16px;
 			}
 		}
 	}
