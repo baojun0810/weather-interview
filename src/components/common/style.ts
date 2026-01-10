@@ -118,8 +118,8 @@ export const ButtonStyled = styled.button`
 		props.theme.isDark ? 'none' : props.theme.buttonBg};
 	transition: opacity 0.3s ease-in-out;
 	border: 'none';
-	outline: ${(props) =>
-		props.theme.isDark ? `2px ${props.theme.textSecondary} solid` : 'none'};
+	box-shadow: ${(props) =>
+		props.theme.isDark ? `0 0 0 2px ${props.theme.textSecondary}` : 'none'};
 	cursor: pointer;
 	border-radius: 50%;
 
