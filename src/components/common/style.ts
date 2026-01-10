@@ -113,7 +113,6 @@ export const ButtonStyled = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	box-shadow: 0px 4px 12px 0px ${(props) => props.theme.shadowColor};
 	background: ${(props) =>
 		props.theme.isDark ? 'none' : props.theme.buttonBg};
 	transition: opacity 0.3s ease-in-out;
