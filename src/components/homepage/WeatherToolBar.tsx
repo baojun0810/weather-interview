@@ -21,13 +21,13 @@ const WeatherToolBar = () => {
 		DEFAULT_WEATHER_FILTERS_ERRORS
 	);
 	const [invalidLocation, setInvalidLocation] = useState(false);
-
 	const [loading, setLoading] = useState(false);
 
 	const setWeatherInfo = useWeatherStore((s) => s.setWeatherInfo);
 	const addWeatherHistory = useWeatherStore((s) => s.addWeatherHistory);
 
-	const handleSearch = async () => {
+	const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 		setLoading(true);
 
 		const validate = weatherSearchSchema.safeParse(weatherFilters);
@@ -46,8 +46,7 @@ const WeatherToolBar = () => {
 				addWeatherHistory
 			);
 
-			setWeatherErrors(DEFAULT_WEATHER_FILTERS_ERRORS);
-			setInvalidLocation(false);
+			reset();
 		} catch (e) {
 			if (axios.isAxiosError(e)) {
 				if (e.response?.data.cod === '404') setInvalidLocation(true);
@@ -58,46 +57,50 @@ const WeatherToolBar = () => {
 		}
 	};
 
+	const reset = () => {
+		setWeatherFilters(DEFAULT_WEATHER_FILTERS);
+		setWeatherErrors(DEFAULT_WEATHER_FILTERS_ERRORS);
+		setInvalidLocation(false);
+	};
+
 	return (
 		<WeatherToolBarStyled>
-			<div className='search-container'>
-				<div className='search-col'>
-					<InputText
-						label='City'
-						value={weatherFilters.city}
-						onChange={(value) =>
-							setWeatherFilters((prev) => ({
-								...prev,
-								city: value,
-							}))
-						}
-						error={weatherErrors.city}
-					/>
-				</div>
-				<div className='search-col'>
-					<InputText
-						label='Country'
-						value={weatherFilters.country}
-						onChange={(value) =>
-							setWeatherFilters((prev) => ({
-								...prev,
-								country: value,
-							}))
-						}
-					/>
-				</div>
-				<SearchButtonStyled onClick={handleSearch}>
-					{loading ? (
-						<LoadingSpinStyled />
-					) : (
-						<BiSearch
-							color='white'
-							size={30}
-							className='search-icon'
+			<form onSubmit={(e) => handleSearch(e)}>
+				<div className='search-container'>
+					<div className='search-col'>
+						<InputText
+							label='City'
+							value={weatherFilters.city}
+							onChange={(value) =>
+								setWeatherFilters((prev) => ({
+									...prev,
+									city: value,
+								}))
+							}
+							error={weatherErrors.city}
 						/>
-					)}
-				</SearchButtonStyled>
-			</div>
+					</div>
+					<div className='search-col'>
+						<InputText
+							label='Country'
+							value={weatherFilters.country}
+							onChange={(value) =>
+								setWeatherFilters((prev) => ({
+									...prev,
+									country: value,
+								}))
+							}
+						/>
+					</div>
+					<SearchButtonStyled type='submit'>
+						{loading ? (
+							<LoadingSpinStyled />
+						) : (
+							<BiSearch color='white' className='search-icon' />
+						)}
+					</SearchButtonStyled>
+				</div>
+			</form>
 			{invalidLocation && (
 				<div className='error-search-callout'>
 					<BiSolidError size={24} />

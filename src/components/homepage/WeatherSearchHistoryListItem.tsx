@@ -1,4 +1,3 @@
-import React from 'react';
 import { WeatherSearchHistoryListItemStyled } from '../../pages/homepage/style';
 import Button from '../common/Button';
 import { BiSearch, BiSolidTrashAlt } from 'react-icons/bi';

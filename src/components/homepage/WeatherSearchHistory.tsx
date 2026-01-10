@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	WeatherSearchHistoryListStyled,
 	WeatherSearchHistoryStyled,
@@ -23,7 +22,10 @@ const WeatherSearchHistory = () => {
 					))}
 				</WeatherSearchHistoryListStyled>
 			) : (
-				<Empty title='Weather history is empty' />
+				<Empty
+					title='No History Yet'
+					description='Search for a city above to see the current weather conditions and start exploring!'
+				/>
 			)}
 		</WeatherSearchHistoryStyled>
 	);

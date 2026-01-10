@@ -3,7 +3,6 @@ import type { GetWeatherInfoResponse } from '../../api/services/weather/interfac
 import { v4 as uuidv4 } from 'uuid';
 import WeatherServices from '../../api/services/weather';
 import type { IWeatherFilters, IWeatherInfo } from './interface';
-import storage from '../../utils/storage';
 
 export const extractWeatherInfo = (info: GetWeatherInfoResponse) => ({
 	id: uuidv4(),
