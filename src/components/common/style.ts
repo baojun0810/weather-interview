@@ -118,7 +118,9 @@ export const ButtonStyled = styled.button`
 	transition: opacity 0.3s ease-in-out;
 	border: 'none';
 	box-shadow: ${(props) =>
-		props.theme.isDark ? `0 0 0 2px ${props.theme.textSecondary}` : 'none'};
+		props.theme.isDark
+			? `0 0 0 2px ${props.theme.textSecondary}`
+			: `0px 4px 12px 0px ${props.theme.shadowColor}`};
 	cursor: pointer;
 	border-radius: 50%;
 
